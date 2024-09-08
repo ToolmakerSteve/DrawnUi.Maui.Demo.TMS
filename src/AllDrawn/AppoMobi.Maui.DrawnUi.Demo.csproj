@@ -48,7 +48,6 @@
 
     
   <ItemGroup>    
-    <PackageReference Include="AppoMobi.Maui.DrawnUi" Version="1.2.3.8" />    
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />    
   </ItemGroup>
 
@@ -88,6 +87,10 @@
 	  <None Remove="Views\Controls\Navigation\" />
 	  <None Remove="Views\Controls\Fun\" />
   </ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DrawnUi.Maui.TMS\src\Engine\DrawnUi.Maui.csproj" />
+	</ItemGroup>
 
 
 
