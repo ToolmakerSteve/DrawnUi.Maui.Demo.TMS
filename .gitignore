@@ -196,3 +196,4 @@ FakesAssemblies/
 
 .idea/
 .meteor/
+/src/DrawnUi.Maui.TMS
