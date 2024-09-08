@@ -50,11 +50,9 @@ namespace AppoMobi.Maui.DrawnUi.Demo
             builder.Services.AddTransient<ScrollingCellsViewModel>();
             builder.Services.AddTransient<SomeTabsViewModel>();
             builder.Services.AddTransient<SimplePageViewModel>();
-            builder.Services.AddTransient<TakePictureViewModel>();
             builder.Services.AddTransient<ItemDetailsViewModel>();
             builder.Services.AddTransient<ScreenItemDetails>();
             builder.Services.AddTransient<ScreenCarousel>();
-            builder.Services.AddTransient<ScreenCameraPhoto>();
             builder.Services.AddTransient<ScreenControls>();
 
             builder.Services.AddTransient<ProjectViewModel>();

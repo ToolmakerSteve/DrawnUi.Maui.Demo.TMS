@@ -1,5 +1,4 @@
-﻿using DrawnUi.Maui.Camera;
-using DrawnUi.Maui.Infrastructure;
+﻿using DrawnUi.Maui.Infrastructure;
 using Reversi.Views.Partials;
 using System.Windows.Input;
 
@@ -39,66 +38,6 @@ namespace AppoMobi.Maui.DrawnUi.Demo.ViewModels
         }
 
         #region COMMANDS
-
-        public ICommand CommandCamera
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    if (CheckLockAndSet("cam", 3500) || App.Shell.HasTopmostModalBindingContext<TakePictureViewModel>())
-                        return;
-
-                    SkiaCamera.CheckPermissions(async (presented) =>
-                        {
-                            var vm = App.Instance.Services.GetService<TakePictureViewModel>();
-                            //todo set callback
-                            var content = new ScreenCameraPhoto(vm);
-                            await App.Shell.PushModalAsync(content, false, true, true, new Dictionary<string, object>
-                            {
-                                {"callback", new Command(async (context) =>
-                                {
-                                    if (context is CapturedImage item)
-                                    {
-                                        DisplayPreview = new LoadedImageSource(item.Image);
-
-                                        /*
-                                        using var bitmap = SKBitmap.FromImage(item.Image);
-                                        var data = bitmap.Encode(SKEncodedImageFormat.Jpeg, 90);
-                                        using var stream = data.AsStream();
-            
-                                        using var memoryStream = new MemoryStream();
-                                        await stream.CopyToAsync(memoryStream);
-                                        memoryStream.Position = 0;
-                                        byte[] bytes = memoryStream.ToArray();
-            
-                                        //save to tmp..
-                                        var tmpFilename = await SaveTmpFIle(bytes, "jpg");
-            
-                                        //save to app folder
-                                        var storedFIlename = await CopyToAppDataDirectory(tmpFilename);                        
-                                        App.Instance.User.Avatar = storedFIlename;
-                                        App.Instance.SaveUser();
-                                        Presentation.UpdateUser();
-                                        */
-
-                                        CommandCloseModal.Execute(null);
-
-                                        App.Shell.ShowToast("Saved to camera roll");
-                                    }
-                                })}
-                            });
-
-                        },
-                        (presented) =>
-                        {
-                            //no permissions no camera screen bye bye
-                            App.Shell.ShowToast("No permissions");
-                        });
-
-                });
-            }
-        }
 
 
 
@@ -304,25 +243,6 @@ namespace AppoMobi.Maui.DrawnUi.Demo.ViewModels
             }
         }
 
-        public ICommand CommandPushLottieAndFriends
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    if (CheckLockAndSet())
-                        return;
-
-                    await Task.Run(async () =>
-                    {
-
-                        await App.Shell.PushAsync(new ScreenLottieRive());
-
-                    }).ConfigureAwait(false);
-
-                });
-            }
-        }
 
         public ICommand CommandPushVarious
         {

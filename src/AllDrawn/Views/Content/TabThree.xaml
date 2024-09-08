@@ -117,10 +117,6 @@
 
 
                 <controls1:SmallButton
-                    CommandTapped="{Binding CommandPushLottieAndFriends}"
-                    Text="Lottie and other" />
-
-                <controls1:SmallButton
                     CommandTapped="{Binding CommandPushTransforms}"
                     Text="Transforms" />
 
@@ -149,17 +145,6 @@
                     CommandTapped="{Binding CommandPushPdf}"
                     Text="XAML to PDF" />
 
-                <controls1:SmallButton
-                    CommandTapped="{Binding CommandCamera}"
-                    Text="Drawn Camera">
-                    <draw:SkiaControl.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean">
-                            <On
-                                Platform="Android"
-                                Value="True" />
-                        </OnPlatform>
-                    </draw:SkiaControl.IsVisible>
-                </controls1:SmallButton>
 
                 <controls1:SmallButton
                     CommandTapped="{Binding CommandPushFun}"
